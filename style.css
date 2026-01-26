@@ -1,0 +1,429 @@
+#projects .carousel {
+    width: 90%;
+    margin: 0 auto;
+}
+
+#projects .bg-gray-800 {
+    border-radius: 0 !important; /* Makes the project boxes fully rectangular */
+}
+
+#projects img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto; /* Centers images */
+}
+
+#projects .grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Better responsive layout for images */
+    gap: 1rem; /* Adjusted gap for better visualization */
+}
+
+#projects .github-links {
+    margin-top: 1.5rem;
+    font-size: 1rem;
+}
+
+#projects .github-links a {
+    color: #FF9900;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+#projects .github-links a:hover {
+    color: #e68900;
+}
+
+/* GIF specific styling to preserve near-square aspect ratio */
+#projects .gif-container {
+    position: relative;
+    width: 100%;
+    padding-top: 100.49%; /* 1018/1013 ≈ 100.49% for aspect ratio */
+    overflow: hidden;
+}
+
+#projects .gif-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* CORES AMARELO/PRETO - AWS STYLE */
+:root {
+    --amarelo-aws: #FF9900;
+    --amarelo-hover: #e68900;
+    --amarelo-claro: rgba(255, 153, 0, 0.2);
+    --preto-aws: #000000;
+    --cinza-escuro: #1a1a1a;
+    --cinza-medio: #2d2d2d;
+    --cinza-claro: #b3b3b3;
+    --cinza-muito-claro: #e6e6e6;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #FF9900, #FFD700);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.section-divider {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #FF9900, transparent);
+}
+
+.tech-card, .soft-card {
+    transition: all 0.3s ease;
+    background-color: #2d2d2d;
+    color: #ffffff;
+    border: 1px solid #FF9900;
+    cursor: pointer;
+}
+
+.soft-card {
+    border: 1px solid #FF9900;
+}
+
+.tech-card:hover, .soft-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(255, 153, 0, 0.3);
+    background-color: #3d3d2d;
+}
+
+.tech-card:focus, .soft-card:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #FF9900;
+}
+
+body {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.bg-white {
+    background-color: #2d2d2d !important;
+    color: #ffffff;
+}
+
+.bg-gray-50 {
+    background-color: #1a1a1a !important;
+}
+
+.bg-gray-800 {
+    background-color: #1a1a1a !important;
+}
+
+.bg-blue-50 {
+    background-color: #2d2d2d !important;
+}
+
+.bg-blue-100 {
+    background-color: rgba(255, 153, 0, 0.1) !important;
+}
+
+.text-gray-600, .text-gray-500, .text-gray-400 {
+    color: #b3b3b3 !important;
+}
+
+.text-gray-800 {
+    color: #ffffff !important;
+}
+
+.text-red-600, .text-red-500, .text-red-400, .text-blue-600, .text-blue-800 {
+    color: #FF9900 !important;
+}
+
+.border-gray-300, .border-red-900, .border-gray-700 {
+    border-color: #FF9900 !important;
+}
+
+.shadow-sm {
+    box-shadow: 0 1px 3px rgba(255, 153, 0, 0.3) !important;
+}
+
+.shadow-md {
+    box-shadow: 0 4px 6px rgba(255, 153, 0, 0.3) !important;
+}
+
+.shadow-xl {
+    box-shadow: 0 10px 25px rgba(255, 153, 0, 0.3) !important;
+}
+
+.bg-red-600, .bg-blue-500, .bg-blue-600 {
+    background-color: #FF9900 !important;
+}
+
+.bg-red-700, .bg-blue-700 {
+    background-color: #e68900 !important;
+}
+
+.bg-blue-200 {
+    background-color: rgba(255, 153, 0, 0.2) !important;
+}
+
+.bg-gradient-to-r {
+    background-image: linear-gradient(to right, #1a1a1a, #2d2d2d) !important;
+}
+
+.bg-gray-600 {
+    background-color: #4a4a4a !important;
+}
+
+.text-blue-500 {
+    color: #FF9900 !important;
+}
+
+.bg-green-500 {
+    background-color: #FF9900 !important;
+}
+
+.logo-sesi {
+    width: 140px;
+    height: 140px;
+}
+
+.logos {
+    width: 48px;
+    height: 48px;
+}
+
+.logo-aws {
+    width: 130px;
+    height: 130px;
+}
+
+/* ------------------ RESPONSIVIDADE DAS CERTIFICAÇÕES ------------------ */
+#education .space-y-4 > div {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+@media (max-width: 768px) {
+    #education .space-y-4 > div {
+        flex-direction: column; /* Empilha imagem e texto no celular */
+        align-items: center;
+        text-align: center;
+    }
+
+    #education .space-y-4 img {
+        width: 90px;
+        height: auto;
+        margin-bottom: 0.5rem;
+    }
+
+    #education .space-y-4 a h4 {
+        font-size: 1rem;
+    }
+
+    #education .space-y-4 a p {
+        font-size: 0.9rem;
+    }
+}
+
+/* ------------------ RESPONSIVIDADE DA SEÇÃO DE CONTATO ------------------ */
+#contact .bg-gray-800 {
+    margin: 0 auto;
+    padding: 1.5rem;
+    border-radius: 1rem;
+}
+
+@media (max-width: 768px) {
+    #contact .grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    #contact .bg-gray-800 {
+        width: 90%;
+    }
+
+    #contact img {
+        width: 80%;
+        margin-top: 1rem;
+        border-radius: 1.5rem;
+    }
+}
+
+/* ------------------ AJUSTE DA IMAGEM DE CONTATO ------------------ */
+#contact .relative {
+    width: 100%;
+    max-width: 320px;
+    aspect-ratio: 3 / 4; /* Mantém proporção vertical e evita corte */
+}
+
+#contact .relative img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Preenche a área da box sem distorcer */
+    object-position: center; /* Centraliza o rosto */
+    border-radius: 1.5rem;
+    margin: 0px;
+}
+
+/* No mobile, mantém responsivo e proporcional */
+@media (max-width: 768px) {
+    #contact .relative {
+        max-width: 260px;
+        aspect-ratio: 3 / 4;
+    }
+
+    #contact .relative img {
+        border-radius: 1.25rem;
+    }
+}
+
+/* ===================== AJUSTES: Contato (alinhamento) ===================== */
+#contact .bg-gray-800 {
+    margin: 0 auto;
+    padding: 1.5rem;
+    border-radius: 1rem;
+}
+
+#contact .bg-gray-800 .space-y-4 .flex.items-start {
+    align-items: center;
+    gap: 0.75rem;
+}
+
+#contact .bg-gray-800 .space-y-4 i[data-feather] {
+    min-width: 32px;
+    min-height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0;
+    color: #FF9900;
+}
+
+#contact .bg-gray-800 .space-y-4 .flex.items-start > div {
+    margin: 0;
+}
+@media (max-width: 768px) {
+    #contact .bg-gray-800 {
+        width: 92%;
+        padding: 1.25rem;
+    }
+    #contact .bg-gray-800 .space-y-4 .flex.items-start {
+        justify-content: flex-start;
+        text-align: left;
+    }
+}
+
+/* ===================== AJUSTES: Formação (mobile + estética) ===================== */
+@media (max-width: 768px) {
+    #education .relative .mb-8 {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 0.6rem;
+    }
+
+    #education .relative .z-20 {
+        margin: 0.4rem auto;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 6px 18px rgba(255, 153, 0, 0.12);
+        background-color: #FF9900 !important;
+    }
+    #education .relative .z-20 h1 {
+        margin: 0;
+        font-size: 1rem;
+        line-height: 1;
+    }
+
+    #education .relative .bg-gray-800 {
+        width: 100% !important;
+        max-width: 520px;
+        margin: 0.25rem auto;
+        padding: 1rem;
+        border-radius: 12px;
+        box-shadow: 0 8px 22px rgba(0,0,0,0.45);
+    }
+
+    #education .relative .logo-sesi, 
+    #education .relative .logo-aws {
+        width: 120px;
+        height: auto;
+        display: block;
+        margin: 0.4rem auto 0.2rem auto;
+    }
+
+    #education .relative .bg-gray-800 h3 {
+        font-size: 1.05rem;
+        margin-bottom: 0.4rem;
+        color: #FF9900 !important;
+    }
+    #education .relative .bg-gray-800 p {
+        font-size: 0.95rem;
+        margin: 0;
+    }
+
+    #education .max-w-4xl .space-y-8 {
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #education .relative .bg-gray-800, 
+    #contact .bg-gray-800 {
+        padding: 0.9rem;
+    }
+    #contact .bg-gray-800 .space-y-4 i[data-feather] {
+        min-width: 28px;
+        min-height: 28px;
+    }
+}
+
+#contact .bg-gray-800 .space-y-4 .flex.items-start > div p {
+    overflow-wrap: break-word;
+}
+
+@media (max-width: 768px) {
+    #contact .grid {
+        text-align: center;
+    }
+    #contact .bg-gray-800 .space-y-4 .flex.items-start {
+        justify-content: center;
+        text-align: center;
+    }
+    #contact .bg-gray-800 p {
+        font-size: 0.875rem;
+    }
+}
+
+/* CORREÇÕES ADICIONAIS PARA AMARELO/PRETO */
+.hover\:text-red-400:hover,
+.hover\:text-red-600:hover {
+    color: #FF9900 !important;
+}
+
+.bg-red-600:hover,
+.bg-blue-500:hover,
+.bg-blue-600:hover {
+    background-color: #e68900 !important;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #FF9900 !important;
+}
+
+.border-b,
+.border-t {
+    border-color: #FF9900 !important;
+}
+
+.text-green-500 {
+    color: #FF9900 !important;
+}
