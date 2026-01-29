@@ -86,6 +86,138 @@
         .bg-gray-700 { background-color: rgba(255, 153, 0, 0.1) !important; border: 1px solid rgba(255, 153, 0, 0.3) !important; }
         a:hover { color: #FF9900 !important; }
         .text-red-400 { color: #FF9900 !important; }
+
+        /* Estilos para galeria reveal gradual + botão tela cheia */
+        .reveal-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            padding: 1rem 0;
+        }
+        .reveal-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            cursor: pointer;
+            outline: none;
+            user-select: none;
+        }
+        .reveal-item input[type="checkbox"] {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .reveal-content {
+            position: relative;
+            width: 100%;
+            height: 280px;
+            transition: all 0.8s ease;
+        }
+        .reveal-content img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: blur(10px);
+            transform: scale(1.0);
+            transition: filter 1.2s ease, transform 1.2s ease;
+        }
+        .reveal-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-align: center;
+            padding: 1.5rem;
+            opacity: 1;
+            transition: opacity 0.8s ease;
+            pointer-events: none;
+        }
+        .reveal-item:hover .reveal-content img,
+        .reveal-item:focus-within .reveal-content img,
+        .reveal-item input[type="checkbox"]:checked ~ .reveal-content img {
+            filter: blur(0);
+            transform: scale(1.05);
+        }
+        .reveal-item:hover .reveal-overlay,
+        .reveal-item:focus-within .reveal-overlay,
+        .reveal-item input[type="checkbox"]:checked ~ .reveal-content .reveal-overlay {
+            opacity: 0;
+        }
+        .reveal-item input[type="checkbox"]:checked ~ .reveal-content {
+            box-shadow: 0 0 20px rgba(255, 153, 0, 0.3);
+        }
+
+        /* Botão tela cheia */
+        .fullscreen-btn {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            background: rgba(0,0,0,0.6);
+            color: #FF9900;
+            border: 1px solid #FF9900;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 10;
+        }
+        .reveal-item:hover .fullscreen-btn,
+        .reveal-item input[type="checkbox"]:checked ~ .reveal-content .fullscreen-btn {
+            opacity: 1;
+        }
+        .fullscreen-btn:hover {
+            background: #FF9900;
+            color: black;
+        }
+
+        .fullscreen-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.95);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .fullscreen-modal.active {
+            display: flex;
+        }
+        .fullscreen-modal img {
+            max-width: 95%;
+            max-height: 95vh;
+            object-fit: contain;
+            border: 2px solid #FF9900;
+            border-radius: 8px;
+        }
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #FF9900;
+            color: black;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
     </style>
 </head>
 
@@ -146,7 +278,7 @@
                         Possuo experiência com AWS, atuando na criação e configuração de infraestrutura em nuvem, hospedagem de aplicações web, serviços serverless, monitoramento e boas práticas de segurança. Como parte dessa vivência, fui responsável por hospedar e publicar o site Web Café, lidando com provisionamento de recursos, deploy e aplicação de validação do funcionamento em ambiente cloud.
                     </p>
                     <p class="text-lg">
-                        Atualmente, busco atuar com Monitorramento de dados, Análise de dados ou como DevOps, com foco em automação, confiabilidade, escalabilidade e monitoramento de ambientes em nuvem, aplicando na prática os conhecimentos adquiridos em laboratórios e projetos reais para apoiar times de desenvolvimento e operações.
+                        Atualmente, busco atuar com Monitoramento de dados, Análise de dados ou como DevOps, com foco em automação, confiabilidade, escalabilidade e monitoramento de ambientes em nuvem, aplicando na prática os conhecimentos adquiridos em laboratórios e projetos reais para apoiar times de desenvolvimento e operações.
                     </p>
                 </div>
             </div>
@@ -439,13 +571,75 @@
                                     <p class="text-xs text-gray-500 mt-1">Direitos dos titulares, deveres das empresas, governança de dados e sanções.</p>
                                 </a>
                             </div>
+
                         </div>
                         <h3 class="mt-6 text-gray-300 text-sm italic">Clique nas minhas Certificações para verificar suas Credenciais!</h3>
                     </div>
                 </div>
+
+                <div class="mt-16" data-aos="fade-up">
+                    <h3 class="text-xl font-semibold mb-8 text-center gradient-text">Galeria de Atividades</h3>
+                    <div class="bg-gray-800 p-8 rounded-xl shadow-sm">
+                        <div class="reveal-gallery">
+                            <label class="reveal-item" tabindex="0">
+                                <input type="checkbox">
+                                <div class="reveal-content">
+                                    <img src="img/Deploy Web Café.jpg" alt="Deploy Web Café" loading="lazy">
+                                    <div class="reveal-overlay">Deploy Web Café</div>
+                                    <button class="fullscreen-btn" onclick="openFullscreen('img/Deploy Web Café.jpg')">
+                                        <i data-feather="maximize-2"></i>
+                                    </button>
+                                </div>
+                            </label>
+
+                            <label class="reveal-item" tabindex="0">
+                                <input type="checkbox">
+                                <div class="reveal-content">
+                                    <img src="img/API em Python.png" alt="API em Python" loading="lazy">
+                                    <div class="reveal-overlay">API em Python</div>
+                                    <button class="fullscreen-btn" onclick="openFullscreen('img/API em Python.png')">
+                                        <i data-feather="maximize-2"></i>
+                                    </button>
+                                </div>
+                            </label>
+
+                            <label class="reveal-item" tabindex="0">
+                                <input type="checkbox">
+                                <div class="reveal-content">
+                                    <img src="img/CSV em python.png" alt="CSV em python" loading="lazy">
+                                    <div class="reveal-overlay">CSV em python</div>
+                                    <button class="fullscreen-btn" onclick="openFullscreen('img/CSV em python.png')">
+                                        <i data-feather="maximize-2"></i>
+                                    </button>
+                                </div>
+                            </label>
+
+                            <label class="reveal-item" tabindex="0">
+                                <input type="checkbox">
+                                <div class="reveal-content">
+                                    <img src="img/Configurando AWS CLI.png" alt="Configurando AWS CLI" loading="lazy">
+                                    <div class="reveal-overlay">Configurando AWS CLI</div>
+                                    <button class="fullscreen-btn" onclick="openFullscreen('img/Configurando AWS CLI.png')">
+                                        <i data-feather="maximize-2"></i>
+                                    </button>
+                                </div>
+                            </label>
+
+                        </div>
+                        <p class="text-center text-gray-400 mt-8 text-sm italic">
+                            Passe o mouse ou clique para revelar • Use o botão para ver em tela cheia
+                        </p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
+
+    <div id="fullscreenModal" class="fullscreen-modal">
+        <button class="close-modal" onclick="closeFullscreen()">×</button>
+        <img id="fullscreenImg" src="" alt="Imagem em tela cheia">
+    </div>
 
     <section id="contact" class="py-16 bg-black border-t border-b" style="border-color: #FF9900 !important; padding-top: 5rem;">
         <div class="container mx-auto px-4">
@@ -553,6 +747,23 @@
         backToTop.addEventListener('click', (e) => {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        function openFullscreen(src) {
+            document.getElementById('fullscreenImg').src = src;
+            document.getElementById('fullscreenModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeFullscreen() {
+            document.getElementById('fullscreenModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.getElementById('fullscreenModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeFullscreen();
+            }
         });
     </script>
 </body>
