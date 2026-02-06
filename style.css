@@ -427,3 +427,44 @@ body {
 .text-green-500 {
     color: #FF9900 !important;
 }
+
+/* Novos estilos para hover em projetos */
+.project-thumbnail {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.project-thumbnail:hover {
+    transform: scale(1.05);
+}
+
+.project-thumbnail::after {
+    content: attr(alt);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.5rem;
+    background: rgba(255, 153, 0, 0.7);
+    color: #000;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-thumbnail:hover::after {
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .project-thumbnail {
+        margin-bottom: 1rem;
+    }
+    h3 {
+        font-size: 1.5rem;
+    }
+    h4 {
+        font-size: 1.1rem;
+    }
+}
